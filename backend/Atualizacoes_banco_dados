@@ -1,0 +1,38 @@
+ALTER TABLE sisger.aluno ADD estudou_em_escola_militar tinyint(1) NULL;
+
+
+ALTER TABLE sisger.aluno MODIFY COLUMN id_func varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL;
+
+
+ALTER TABLE sisger.aluno ADD CONSTRAINT aluno_unique UNIQUE KEY (id_func,num_individual);
+
+
+CREATE TABLE IF NOT EXISTS users (
+                id INTEGER PRIMARY KEY ,
+                username varchar(250) UNIQUE,
+                password varchar(200),
+                profile TEXT,
+                name TEXT
+            );
+
+
+CREATE TABLE IF NOT EXISTS elogios (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    alunoId INT,
+    sargentoId INT,
+    sargentoNome TEXT,
+    descricao TEXT,
+    data DATETIME DEFAULT CURRENT_TIMESTAMP(),
+    FOREIGN KEY (alunoId) references users(id) ON DELETE CASCADE,
+    FOREIGN KEY (sargentoId) REFERENCES users(id) ON DELETE CASCADE
+);
+
+
+INSERT INTO sisger.users (id,username,password,profile,name) VALUES
+	 (1,'sargento','$2a$10$YXXcO6E7fa4sEGkVBVIDBebceA5JOrFIfFCDWKaxptBGY5BEhcJg6','Sargento','Sgt Capellari'),
+	 (2,'aluno','$2a$10$YXXcO6E7fa4sEGkVBVIDBebceA5JOrFIfFCDWKaxptBGY5BEhcJg6','Aluno','Castro'),
+	 (3,'instrutor','$2a$10$YXXcO6E7fa4sEGkVBVIDBebceA5JOrFIfFCDWKaxptBGY5BEhcJg6','Instrutor','Pedro'),
+	 (4,'sens','$2a$10$YXXcO6E7fa4sEGkVBVIDBebceA5JOrFIfFCDWKaxptBGY5BEhcJg6','SENS','Ten Ana Sens');
+
+
+Outeiro Atualizado 

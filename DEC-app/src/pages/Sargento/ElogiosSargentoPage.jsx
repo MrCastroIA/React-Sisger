@@ -315,16 +315,14 @@ const styles = {
     alignItems: 'center',
     transition: 'background-color 0.2s ease',
     backgroundColor: 'transparent',
+    '&:hover': {
+      backgroundColor: '#f0f0f0',
+    },
   },
   alunoListItemSelected: {
     backgroundColor: '#e0f7fa',
     fontWeight: 'bold',
     borderLeft: '4px solid #007bff',
-  },
-  alunoListItem: { // Reaplicando para garantir que o hover funciona
-    '&:hover': {
-      backgroundColor: '#f0f0f0',
-    },
   },
   alunoIdFunc: {
     fontSize: '0.85em',
