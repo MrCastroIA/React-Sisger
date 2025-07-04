@@ -1,75 +1,55 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useState } from 'react'; // Garanta que useState está sendo importado
 
-function RelatoriosPage() {
-  const chartContainerRef = useRef(null);
-  const chartInstanceRef = useRef(null);
+// 1. IMPORTE OS COMPONENTES DOS GRÁFICOS
+import GraficoPizza from '../../components/GraficoPizza'; 
+import MapaBrasil from '../../components/MapaBrasil';     
 
-  useEffect(() => {
-    // 1. Crie o script BASE primeiro
-    const baseScript = document.createElement('script');
-    baseScript.src = 'https://cdn.anychart.com/releases/8.13.0/js/anychart-base.min.js';
-    baseScript.async = true;
+// 2. IMPORTE O CSS PARA O ESTILO DAS ABAS
+import './RelatorioPage.css'; 
 
-    // 2. QUANDO O SCRIPT BASE CARREGAR, carregue o script de PIZZA
-    baseScript.onload = () => {
+// Este é o seu componente de página de relatório já existente
+function RelatorioPage() {
   
-
-      const pieScript = document.createElement('script');
-      pieScript.src = 'https://cdn.anychart.com/releases/8.13.0/js/anychart-pie.min.js';
-      pieScript.async = true;
-
-      // 3. QUANDO O SCRIPT DE PIZZA CARREGAR, crie o gráfico
-      pieScript.onload = () => {
-        
-        if (window.anychart && chartContainerRef.current && !chartInstanceRef.current) {
-            // Garante que o código só rode se o container existir
-            anychart.onDocumentReady(function () {
-                const data = [
-                  { x: "Barba", value: 25 },
-                  { x: "Cabelo", value: 45 },
-                  { x: "Fardamento", value: 15 },
-                  { x: "Númerica", value: 15 }
-                ];  
-    
-                const chart = anychart.pie(data);
-                chart.title("Relatorio NPCCAL");
-                chart.container(chartContainerRef.current);
-
-                chart.draw();
-    
-                chartInstanceRef.current = chart;
-            });
-        }
-      };
-      
-      document.body.appendChild(pieScript);
-    };
-
-    // Adiciona o script BASE ao corpo do documento para iniciar o processo
-    document.body.appendChild(baseScript);
-
-    // Função de limpeza para remover os dois scripts
-    return () => {
-      if (chartInstanceRef.current) {
-        chartInstanceRef.current.dispose();
-        chartInstanceRef.current = null;
-      }
-      // Remove os scripts pelo seletor de atributo para garantir
-      document.querySelectorAll('script[src*="anychart"]').forEach(e => e.remove());
-    };
-  }, []);
+  // 3. ADICIONE O ESTADO PARA CONTROLAR A ABA ATIVA
+  const [abaAtiva, setAbaAtiva] = useState('pizza');
 
   return (
+    // Você pode ter um div ou um fragmento principal aqui. Mantenha-o.
     <div>
-      <h2>Relatório Page</h2>
-      <p>Abaixo está um exemplo de gráfico de pizza carregado de uma biblioteca externa.</p>
-      <div 
-        ref={chartContainerRef} 
-        id="chart-container" 
-        style={{ width: '100%', height: '500px', marginTop: '20px' }}
-      ></div>
+      {/* Mantenha o título ou outros elementos que você já tem na página */}
+      <h2>Página de Relatórios</h2>
+      <p>Selecione uma das abas abaixo para visualizar o relatório desejado.</p>
+
+      {/* 4. ADICIONE O CONTAINER DO DASHBOARD AQUI DENTRO
+        Este é o mesmo código que estava no DashboardPage.js
+      */}
+      <div className="dashboard-container">
+        <div className="tab-nav">
+          <div 
+            className={`tab-button ${abaAtiva === 'pizza' ? 'active' : ''}`}
+            onClick={() => setAbaAtiva('pizza')}
+          >
+            Relatório de NPCCAL
+          </div>
+          <div 
+            className={`tab-button ${abaAtiva === 'mapa' ? 'active' : ''}`}
+            onClick={() => setAbaAtiva('mapa')}
+          >
+            Mapa de Alunos por estado
+          </div>
+        </div>
+
+        <div className="chart-content">
+          {/* A lógica de renderização condicional permanece a mesma */}
+          {abaAtiva === 'pizza' && <GraficoPizza />}
+          {abaAtiva === 'mapa' && <MapaBrasil />}
+        </div>
+      </div>
+
+      {/* Você pode ter outros elementos na sua página aqui embaixo */}
+
     </div>
   );
 }
 
-export default RelatoriosPage;
+export default RelatorioPage;

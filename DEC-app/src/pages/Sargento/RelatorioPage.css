@@ -1,0 +1,40 @@
+.dashboard-container {
+  max-width: 1200px;
+  /* Removido o margin: auto para se ajustar melhor dentro de outra página */
+  margin-top: 20px; 
+  padding: 24px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+}
+
+.tab-nav {
+  display: flex;
+  border-bottom: 2px solid #eee;
+  margin-bottom: 24px;
+}
+
+.tab-button {
+  padding: 12px 24px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 500;
+  color: #555;
+  border-bottom: 2px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.tab-button:hover {
+  background-color: #f7f7f7;
+}
+
+.tab-button.active {
+  color: #007bff;
+  border-bottom-color: #007bff;
+}
+
+.chart-content {
+  width: 100%;
+  height: 600px; 
+}
