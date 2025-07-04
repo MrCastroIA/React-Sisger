@@ -27,6 +27,7 @@ function DashboardLayout() {
             <li><Link to="/sargento/atestados">Investigação de Atestados</Link></li>
             <li><Link to="/sargento/relatorios">Relatórios</Link></li>
             <li><Link to="/sargento/cadastrar-alunos">Cadastrar Alunos</Link></li>
+            <li><Link to="/sargento/relatorio-page-map">Relatorio Map</Link></li>
           </>
         );
       case 'Aluno':

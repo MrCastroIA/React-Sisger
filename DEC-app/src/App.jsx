@@ -20,7 +20,7 @@ import JustificacaoPage from './pages/Sargento/JustificacaoPage';
 import ElogiosSargentoPage from './pages/Sargento/ElogiosSargentoPage';
 import AtestadosPage from './pages/Sargento/AtestadosPage';
 import RelatoriosPage from './pages/Sargento/RelatoriosPage';
-// CORRIGIDO: Nome da importação e caminho do arquivo
+import RelatorioPageMap from './pages/Sargento/RelatorioPageMap'; 
 import CadastrarAlunosPage from './pages/Sargento/CadastrarAlunosPage'; 
 
 // Aluno
@@ -67,6 +67,7 @@ function App() {
             <Route path="/sargento/relatorios" element={<RelatoriosPage />} />
             {/* CORRIGIDO: path sem espaço e nome do componente correto */}
             <Route path="/sargento/cadastrar-alunos" element={<CadastrarAlunosPage />} />
+            <Route path="/sargento/relatorio-page-map" element={<RelatorioPageMap />} />
           </Route>
 
           {/* Grupo de rotas protegidas para o Aluno */}
