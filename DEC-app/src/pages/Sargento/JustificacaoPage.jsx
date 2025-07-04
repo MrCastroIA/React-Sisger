@@ -12,3 +12,5 @@ function JustificacaoPage() { // Note que a função é declarada
 }
 
 export default JustificacaoPage; // ESSA LINHA É CRÍTICA! Ela exporta o componente como 'default'
+
+//Recurso

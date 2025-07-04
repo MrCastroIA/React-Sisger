@@ -1,4 +1,3 @@
-// src/pages/Aluno/AlunoDashboard.jsx
 import React from 'react';
 
 function AtestadosPage() { // Note que a função é declarada
