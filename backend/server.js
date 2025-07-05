@@ -28,7 +28,7 @@ dbConnection.connect(err => {
 });
 
 
-app.get('/alunos', (req, res) => {
+app.get('/api/alunoscompleta', (req, res) => {
   const query = 'SELECT * FROM aluno;';
 
   dbConnection.query(query, (err, results) => {
@@ -267,6 +267,7 @@ app.get('/api/alunos', (req, res) => {
         res.status(200).json({ alunos: results });
     });
 });
+
 
 // NOVO: Rota para buscar elogios de um aluno específico
 app.get('/api/elogios/:alunoId', (req, res) => {

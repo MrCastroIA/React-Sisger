@@ -21,6 +21,7 @@ import ElogiosSargentoPage from './pages/Sargento/ElogiosSargentoPage';
 import AtestadosPage from './pages/Sargento/AtestadosPage';
 import RelatoriosPage from './pages/Sargento/RelatoriosPage';
 import CadastrarAlunosPage from './pages/Sargento/CadastrarAlunosPage'; 
+import ListaAlunosPage from './pages/Sargento/ListaAlunoPage';
 
 // Aluno
 import NpccalAlunoPage from './pages/Aluno/NpccalAlunoPage';
@@ -64,8 +65,8 @@ function App() {
             <Route path="/sargento/elogios" element={<ElogiosSargentoPage />} />
             <Route path="/sargento/atestados" element={<AtestadosPage />} />
             <Route path="/sargento/relatorios" element={<RelatoriosPage />} />
-            {/* CORRIGIDO: path sem espaço e nome do componente correto */}
             <Route path="/sargento/cadastrar-alunos" element={<CadastrarAlunosPage />} />
+            <Route path='/sargento/lista-alunos' element={<ListaAlunosPage />} />
           </Route>
 
           {/* Grupo de rotas protegidas para o Aluno */}
